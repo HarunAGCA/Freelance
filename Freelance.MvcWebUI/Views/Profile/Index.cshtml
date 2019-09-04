@@ -1,0 +1,56 @@
+﻿@model Freelance.MvcWebUI.Models.UserProfileViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+   
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Profil Bilgileri</div>
+            <table class="table">
+                <tr>
+                    <th>Kullanıcı Adı</th>
+                    <td>@Model.User.Name</td>
+                </tr>
+                <tr>
+                    <th>Mail</th>
+                    <td>@Model.User.Mail</td>
+                </tr>
+                <tr>
+                    <th>Şifre</th>
+                    <td>@Model.User.Password</td>
+                </tr>
+                <tr>
+                    <th>Bakiye</th>
+                    <td>@Model.User.Credit</td>
+                </tr>
+                <tr>
+                    <th>Yayındaki Proje Sayısı</th>
+                    <td>@Model.MyProjectsAsOwner.Count(x=>x.StateId == 1)</td>
+                </tr>
+                <tr>
+                    <th>Çalıştığım Aktif Proje Sayısı</th>
+                    <td>@Model.MyProjectsAsWorker.Count(x=> x.StateId == 2 || x.StateId == 3)</td>
+                </tr>
+                <tr>
+                    <th>Yayımladığım Toplam Proje Sayısı</th>
+                    <td>@Model.MyProjectsAsOwner.Count</td>
+                </tr>
+                <tr>
+                    <th>Çalıştığım Toplam Proje Sayısı</th>
+                    <td>@Model.MyProjectsAsWorker.Count</td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td>
+                        <a href="/Profile/Edit" class="btn btn-default" role="button">Düzenle</a>
+                        
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

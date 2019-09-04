@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{864BAFB5-3626-4EE2-8FC2-CCCAF4BF7955}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Freelance.DAL</RootNamespace>
+    <AssemblyName>Freelance.DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstract\IMessageDal.cs" />
+    <Compile Include="Abstract\IOfferDal.cs" />
+    <Compile Include="Abstract\IPaymentDal.cs" />
+    <Compile Include="Abstract\IProjectDal.cs" />
+    <Compile Include="Abstract\IStateDal.cs" />
+    <Compile Include="Abstract\IUserDal.cs" />
+    <Compile Include="Concrete\EntityFramework\CodeFirstMapping\MessageMap.cs" />
+    <Compile Include="Concrete\EntityFramework\CodeFirstMapping\OfferMap.cs" />
+    <Compile Include="Concrete\EntityFramework\CodeFirstMapping\PaymentMap.cs" />
+    <Compile Include="Concrete\EntityFramework\CodeFirstMapping\ProjectMap.cs" />
+    <Compile Include="Concrete\EntityFramework\CodeFirstMapping\StateMap.cs" />
+    <Compile Include="Concrete\EntityFramework\CodeFirstMapping\UserMap.cs" />
+    <Compile Include="Concrete\EntityFramework\Contexts\FreelanceContext.cs" />
+    <Compile Include="Concrete\EntityFramework\EFMessageDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EFOfferDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EFPaymentDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EFProjectDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EFStateDal.cs" />
+    <Compile Include="Concrete\EntityFramework\EFUserDal.cs" />
+    <Compile Include="Migrations\201909040516161_InitialCreate.cs" />
+    <Compile Include="Migrations\201909040516161_InitialCreate.Designer.cs">
+      <DependentUpon>201909040516161_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Freelance.Entities\Freelance.Entities.csproj">
+      <Project>{a905da41-f117-4e21-b3c9-c44dcb7f9e72}</Project>
+      <Name>Freelance.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201909040516161_InitialCreate.resx">
+      <DependentUpon>201909040516161_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

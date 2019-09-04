@@ -1,0 +1,46 @@
+﻿@model List<Freelance.MvcWebUI.Models.ProjectStateViewModel>
+@{
+    ViewBag.Title = "MyProjectsAsOwner";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string color;
+}
+
+<div style="text-align : center">
+    <h1 class="title" style="color : #8BC34A;">Yayımladığım Projeler</h1>
+</div>
+
+<hr />
+
+@foreach (var projectStateViewModel in Model)
+{
+    if (projectStateViewModel.State.Id == 1)
+    {
+        color = "#F8FC6B";
+    }
+    else if (projectStateViewModel.State.Id == 2)
+    {
+        color = "#FFC300";
+    }
+    else if (projectStateViewModel.State.Id == 3)
+    {
+        color = "#FF5733";
+
+    }
+    else
+    {
+        color = "#DAF7A6";
+    }
+
+
+    <a href="/Projects/Details?Id=@projectStateViewModel.Project.Id">
+        <div class="blank-page widget-shadow scroll" style="background-color : @color" id="style-2 div1">
+            <h3>@projectStateViewModel.Project.Header </h3>
+            <h5 align="right">Durumu : @projectStateViewModel.State.StateString.ToString() </h5>
+
+        </div>
+    </a>
+
+    <hr />
+
+}
+

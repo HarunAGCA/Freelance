@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "AddCredit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string currentUserId = HttpContext.Current.Session["UserID"].ToString();
+}
+
+
+<body>
+    <div class="container-fluid">
+        <header>
+            <div class="limiter">
+                <h1 style="color : white">Bakiye Yükle</h1>
+            </div>
+        </header>
+        <div class="creditCardForm">
+            <div class="payment">
+
+
+                <form action="/Profile/Addcredit?currentUserId=@currentUserId" method="post">
+
+                    <div class="form-group creditAmount">
+                        <label for="creditAmount">Yüklenecek Miktar (TL)</label>
+                        <input type="number" class="form-control" id="creditAmount" name="creditAmount" min="5" max="50000" required>
+                    </div>
+
+                    <div class="form-group owner">
+                        <label for="owner">Kart Sahibi</label>
+                        <input type="text" class="form-control" id="owner" required>
+                    </div>
+
+                    <div class="form-group" id="card-number-field">
+                        <label for="cardNumber">Kart Numarası</label>
+                        <input type="number" class="form-control" id="cardNumber" required>
+                    </div>
+                    <div class="form-group CVV">
+                        <label for="cvv">CVV</label>
+                        <input type="number" class="form-control" id="cvv" required>
+                    </div>
+                    <div class="form-group" id="expiration-date">
+                        <label>Son Kullanma Tarihi</label>
+                        <select>
+                            <option value="01">Ocak</option>
+                            <option value="02">Şubat </option>
+                            <option value="03">Mart</option>
+                            <option value="04">Nisan</option>
+                            <option value="05">Mayıs</option>
+                            <option value="06">Haziran</option>
+                            <option value="07">Temmuz</option>
+                            <option value="08">Ağustos</option>
+                            <option value="09">Eylül</option>
+                            <option value="10">Ekim</option>
+                            <option value="11">Kasım</option>
+                            <option value="12">Aralık</option>
+                        </select>
+                        <select>
+                            <option value="16"> 2016</option>
+                            <option value="17"> 2017</option>
+                            <option value="18"> 2018</option>
+                            <option value="19"> 2019</option>
+                            <option value="20"> 2020</option>
+                            <option value="21"> 2021</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="credit_cards">
+                        <img src="~/Content/Themes/CardValidation/assets/images/visa.jpg" id="visa">
+                        <img src="~/Content/Themes/CardValidation/assets/images/mastercard.jpg" id="mastercard">
+                        <img src="~/Content/Themes/CardValidation/assets/images/amex.jpg" id="amex">
+                    </div>
+                    <div class="form-group" id="pay-now">
+                        <input type="submit" value="Onayla" class="btn btn-default" id="confirm_purchase" />
+                    </div>
+                </form>
+
+
+
+            </div>
+        </div>
+        <!--     <p class="examples-note">Here are some dummy credit card numbers and CVV codes so you can test out the form:</p>
+         <div class="examples">
+             <div class="table-responsive">
+                 <table class="table table-hover">
+                     <thead>
+                         <tr>
+                             <th>Type</th>
+                             <th>Card Number</th>
+                             <th>Security Code</th>
+                         </tr>
+                     </thead>
+                     <tbody>
+                         <tr>
+                             <td>Visa</td>
+                             <td>4716108999716531</td>
+                             <td>257</td>
+                         </tr>
+                         <tr>
+                             <td>Master Card</td>
+                             <td>5281037048916168</td>
+                             <td>043</td>
+                         </tr>
+                         <tr>
+                             <td>American Express</td>
+                             <td>342498818630298</td>
+                             <td>3156</td>
+                         </tr>
+                     </tbody>
+                 </table>
+             </div>
+         </div>-->
+    </div>
+
+
+
+</body>
+
+
+

@@ -1,0 +1,41 @@
+﻿@model Freelance.Entities.Project
+@{
+    ViewBag.Title = "Publish";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form action="/Projects/Publish" method="post" class="form-group">
+    <div>
+        <label>Proje Başlığı</label>
+        @Html.TextBoxFor(x => x.Header, new { @class = "form-control", @required = "required" })
+        <br />
+    </div>
+
+    <div>
+        <label>Proje Açıklaması</label>
+        @Html.TextAreaFor(x => x.Description, new { @class = "form-control", @required = "required" })
+        <br />
+    </div>
+
+    <div>
+        <label>Maximum Tutar</label>
+        @Html.TextBoxFor(x => x.MaxPrice, new { @class = "form-control", @required = "required", @type = "number" , @min = "1" , max = @Int32.MaxValue.ToString() })
+        <br />
+    </div>
+
+    <div>
+        <label>Son Geçerlilik Tarihi</label>
+        @Html.TextBoxFor(x => x.DeadlineTime, new { @class = "form-control", @type = "datetime-local", @required = "required",
+       @max = DateTime.Now.AddYears(20).ToString("yyyy-MM-ddT00:00"), @min = DateTime.Now.AddDays(1).ToString("yyyy-MM-ddT00:00"),
+       onkeydown = "return false" })
+        <br />
+    </div>
+
+
+
+
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+</form>
+
+
+

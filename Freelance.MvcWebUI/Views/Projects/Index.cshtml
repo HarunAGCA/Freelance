@@ -1,0 +1,33 @@
+﻿@model List<Freelance.Entities.Project>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string CurrentUserId = HttpContext.Current.Session["UserID"].ToString();
+    string color;
+}
+<div style="text-align : center">
+    <h1 class="title" style="color : #8BC34A;">Yayındaki Projeler</h1>
+</div>
+
+<hr /> 
+
+@foreach (var project in Model)
+{
+    if (project.OwnerId == Convert.ToInt32(CurrentUserId))
+    {
+        color = "#DCDCDC";
+    }
+    else
+    {
+        color = "white";
+    }
+
+    <a href="/Projects/Details?Id=@project.Id">
+        <div class="blank-page widget-shadow scroll" style="background-color : @color" id="style-2 div1">
+            <h3>@project.Header </h3>
+            <h5 align="right">Yayımlanma Tarihi : @project.ReleaseTime</h5>
+        </div>
+    </a>
+    <hr />
+
+}

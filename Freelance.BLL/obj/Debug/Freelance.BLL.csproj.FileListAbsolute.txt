@@ -1,0 +1,11 @@
+D:\PROJECTS\WEB\Freelance\Freelance.BLL\bin\Debug\Freelance.BLL.dll
+D:\PROJECTS\WEB\Freelance\Freelance.BLL\bin\Debug\Freelance.BLL.pdb
+D:\PROJECTS\WEB\Freelance\Freelance.BLL\obj\Debug\Freelance.BLL.csprojAssemblyReference.cache
+D:\PROJECTS\WEB\Freelance\Freelance.BLL\obj\Debug\Freelance.BLL.csproj.CoreCompileInputs.cache
+D:\PROJECTS\WEB\Freelance\Freelance.BLL\obj\Debug\Freelance.BLL.dll
+D:\PROJECTS\WEB\Freelance\Freelance.BLL\obj\Debug\Freelance.BLL.pdb
+D:\PROJECTS\TEST\Freelance\Freelance.BLL\bin\Debug\Freelance.BLL.dll
+D:\PROJECTS\TEST\Freelance\Freelance.BLL\bin\Debug\Freelance.BLL.pdb
+D:\PROJECTS\TEST\Freelance\Freelance.BLL\obj\Debug\Freelance.BLL.csproj.CoreCompileInputs.cache
+D:\PROJECTS\TEST\Freelance\Freelance.BLL\obj\Debug\Freelance.BLL.dll
+D:\PROJECTS\TEST\Freelance\Freelance.BLL\obj\Debug\Freelance.BLL.pdb

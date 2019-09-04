@@ -1,0 +1,190 @@
+﻿@model Freelance.MvcWebUI.Models.ProjectDetailViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string CurrentUserId = HttpContext.Current.Session["UserID"].ToString();
+    string projectOwnerId = Model.Project.OwnerId.ToString();
+}
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Novus Admin Panel an Admin Panel Category Flat Bootstrap Responsive Website Template | General Elements :: w3layouts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel='stylesheet' type='text/css' />
+    <!-- font CSS -->
+    <!-- font-awesome icons -->
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!-- js-->
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/modernizr.custom.js"></script>
+    <!--webfonts-->
+    <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <!--//webfonts-->
+    <!--animate-->
+    <link href="css/animate.css" rel="stylesheet" type="text/css" media="all">
+    <script src="js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <!--//end-animate-->
+    <!-- Metis Menu -->
+    <script src="js/metisMenu.min.js"></script>
+    <script src="js/custom.js"></script>
+    <link href="css/custom.css" rel="stylesheet">
+
+    <script type="text/javascript">
+  
+    </script>
+    <!--//Metis Menu -->
+</head>
+
+
+<body>
+    <div class="row">
+        <div class="col-md-6 general-grids grids-right widget-shadow">
+            <h3 class="title1">@Model.Project.Header</h3>
+            <ul id="myTabs" class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="">
+                    <a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="false">Açıklama</a>
+                </li>
+                <li role="presentation" class="">
+                    <a href="#maxPrice" id="maxPrice-tab" role="tab" data-toggle="tab" aria-controls="maxPrice" aria-expanded="false">Ücret</a>
+                </li>
+                <li role="presentation" class="">
+                    <a href="#deadlineTime" role="tab" id="deadlineTime-tab" data-toggle="tab" aria-controls="deadlineTime" aria-expanded="false">Geçerlilik Tarihi</a>
+                </li>
+                @if (projectOwnerId != CurrentUserId && Model.Project.WorkerId == null)
+                {
+                    <li role="presentation" class="">
+                        <a href="#giveOffer" role="tab" id="giveOffer-tab" data-toggle="tab" aria-controls="giveOffer" aria-expanded="false">Teklif Ver</a>
+                    </li>
+                }
+                <!--@if (projectOwnerId != CurrentUserId)
+                {
+                    <li role="presentation" class="">
+                        <a href="#sendMessage" role="tab" id="sendMessage-tab" data-toggle="tab" aria-controls="sendMessage" aria-expanded="false">Mesaj Gönder</a>
+                    </li>
+                }-->
+                @if (Model.Project.StateId == 2 && Model.Project.WorkerId == Convert.ToInt32(CurrentUserId))
+                {
+                    <form action="/projects/setCompleteAsWorker?projectId=@Convert.ToInt32(Model.Project.Id)" method="post">
+                        <input type="submit" value="Proje Tamamlandı" class=" btn btn-success">
+                    </form>
+                }
+                @if (projectOwnerId == CurrentUserId && Model.Project.StateId == 3)
+                {
+                    <form action="/projects/setCompleteAsOwner?projectId=@Model.Project.Id" method="post">
+                        <input type="submit" value="Onayla ve Ödemeyi Tamamla" class=" btn btn-success">
+                    </form>
+                }
+
+            </ul>
+            <div id="myTabContent" class="tab-content scrollbar1">
+                <div role="tabpanel" class="tab-pane fade" id="home" aria-labelledby="home-tab">
+                    <hr />
+                    <span><u><b>Proje Sahibi Ad:</b></u></span> @Model.Owner.Name
+                    <br />
+                    <span><u><b>Proje Sahibi Mail:</b></u></span> @Model.Owner.Mail
+                    <br />
+                    <br />
+                    @if (Model.Project.StateId != 1)
+                    {
+                        <span><u><b>Çalışan Ad:</b></u></span> @Model.Worker.Name
+                        <br />
+                        <span><u><b>Çalışan Mail:</b></u></span> @Model.Worker.Mail
+                    }
+                    <hr />
+                    <span><u><b>Açıklama:</b></u></span> @Model.Project.Description
+
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="maxPrice" aria-labelledby="maxPrice-tab">
+                    <p> Bu proje için verebileceğim maksimum ücret : @Model.Project.MaxPrice TL' dir.</p>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="deadlineTime" aria-labelledby="deadlineTime-tab">
+                    <p> Bu proje @Model.Project.ReleaseTime.ToString("dd MMMM yyyy  HH:mm") ile  @Model.Project.DeadlineTime.ToString("dd MMMM yyyy  HH:mm") arasında geçerlidir.</p>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="giveOffer" aria-labelledby="giveOffer-tab">
+                    <form style="margin-top:35px" action="/Offers/giveOffer?projectId=@Convert.ToInt32(Model.Project.Id)" method="post">
+                        <div class="form-group">
+                            <label>Teklif Miktarı</label>
+                            <input type="number" class="form-control" id="OfferAmount" name="OfferAmount" aria-describedby="emailHelp" placeholder="Teklif miktarını giriniz" min="1" max="@Int32.MaxValue" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Açıklama</label>
+                            <input type="text" class="form-control" id="OfferDescription" name="OfferDescription" placeholder="Açıklama/Yorum">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Teklif Ver</button>
+                    </form>
+                </div>
+                <!--
+                <div role="tabpanel" class="tab-pane fade" id="sendMessage" aria-labelledby="sendMessage-tab">
+                    <form style="margin-top:35px" action="/message/sendMessage?userId=@Convert.ToInt32(Model.Project.OwnerId)" method="post">
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Mesaj</label>
+                            <input type="text" class="form-control" id="OfferDescription" name="OfferDescription" placeholder="Mesajınızı buraya yazın...">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Gönder</button>
+                    </form>
+                </div>
+                    -->
+
+            </div>
+        </div>
+        <div class="col-md-6 general-grids widget-shadow">
+            <h2 class="modal-title">Teklifler</h2>
+            <div class="bs-example1" data-example-id="embedded-scrollspy">
+                <div data-spy="scroll" data-target="#navbar-example2" class="scrollspy-example scroll scrollbar1">
+                    @foreach (var offer in Model.Offers)
+                    {
+                        <div style="margin:10px ;" class="col-lg-12 blank-page widget-shadow scroll" id="style-2 div1">
+                            <table>
+                                <tr>
+                                    <h3 style="font-size : x-large;">@Model.EFUserDal.GetUser(offer.UserId).Name</h3>
+                                    <h4 style="color : red; font-size : larger">Teklif: @offer.OfferPrice TL</h4>
+
+                                </tr>
+                                <tr>
+                                    <p>@offer.Description</p>
+                                </tr>
+                            </table>
+                            @if (projectOwnerId == CurrentUserId && Model.Project.WorkerId == null)
+                            {
+                                <div>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <form id="btn-Accept" action="/Offers/AcceptOffer?offerId=@offer.Id" method="post">
+                                                    <input type="submit" value="Kabul Et" class=" btn btn-success">
+                                                </form>
+                                            </td>
+                                            <!--
+                                            <td>
+                                                <form action="#" method="get">
+                                                    <input type="submit" value="Mesaj Gönder" class=" btn btn-info">
+                                                </form>
+                                            </td>
+                                                -->
+                                        </tr>
+                                    </table>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+</html>

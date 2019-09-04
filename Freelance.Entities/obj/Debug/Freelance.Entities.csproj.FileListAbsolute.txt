@@ -1,0 +1,14 @@
+D:\PROJECTS\WEB\Freelance\Freelance.Entities\bin\Debug\Freelance.Entities.dll.config
+D:\PROJECTS\WEB\Freelance\Freelance.Entities\bin\Debug\Freelance.Entities.dll
+D:\PROJECTS\WEB\Freelance\Freelance.Entities\bin\Debug\Freelance.Entities.pdb
+D:\PROJECTS\WEB\Freelance\Freelance.Entities\obj\Debug\Freelance.Entities.csproj.CoreCompileInputs.cache
+D:\PROJECTS\WEB\Freelance\Freelance.Entities\obj\Debug\Freelance.Entities.dll
+D:\PROJECTS\WEB\Freelance\Freelance.Entities\obj\Debug\Freelance.Entities.pdb
+D:\PROJECTS\WEB\Freelance\Freelance.Entities\obj\Debug\Freelance.Entities.csprojAssemblyReference.cache
+D:\PROJECTS\TEST\Freelance\Freelance.Entities\bin\Debug\Freelance.Entities.dll.config
+D:\PROJECTS\TEST\Freelance\Freelance.Entities\bin\Debug\Freelance.Entities.dll
+D:\PROJECTS\TEST\Freelance\Freelance.Entities\bin\Debug\Freelance.Entities.pdb
+D:\PROJECTS\TEST\Freelance\Freelance.Entities\obj\Debug\Freelance.Entities.csprojAssemblyReference.cache
+D:\PROJECTS\TEST\Freelance\Freelance.Entities\obj\Debug\Freelance.Entities.csproj.CoreCompileInputs.cache
+D:\PROJECTS\TEST\Freelance\Freelance.Entities\obj\Debug\Freelance.Entities.dll
+D:\PROJECTS\TEST\Freelance\Freelance.Entities\obj\Debug\Freelance.Entities.pdb
